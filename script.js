@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Point culture (en Français car je suis un peu obligé): 
  * Dans ce genre de jeu, un mot equivaut a 5 caractères, y compris les espaces. 
  * La precision, c'est le pourcentage de caractères tapées correctement sur toutes les caractères tapées.
@@ -8,16 +8,28 @@
 let startTime = null, previousEndTime = null;
 let currentWordIndex = 0;
 const wordsToType = [];
+let timerInterval   = null;  
+let totalCharsTyped   = 0;   
+let correctCharsTyped = 0;   
 
 const modeSelect = document.getElementById("mode");
 const wordDisplay = document.getElementById("word-display");
 const inputField = document.getElementById("input-field");
 const results = document.getElementById("results");
+const restartBtn   = document.getElementById("restart-btn");
+const timerDisplay = document.getElementById("timer");
 
 const words = {
-    easy: ["apple", "banana", "grape", "orange", "cherry"],
-    medium: ["keyboard", "monitor", "printer", "charger", "battery"],
-    hard: ["synchronize", "complicated", "development", "extravagant", "misconception"]
+    easy: ["apple", "banana", "grape", "orange", "cherry",
+        "cat", "dog", "run", "jump", "play",
+        "sun", "sky", "tree", "fish", "book"
+    ],
+    medium: ["keyboard", "monitor", "printer", "charger", "battery",
+                "window", "button", "simple", "sample", "change"
+    ],
+    hard: ["synchronize", "complicated", "development", "extravagant", "misconception",
+        "philosophical", "infrastructure", "electromagnetic", "authentication", "perpendicular"
+    ]
 };
 
 // Generate a random word from the selected mode
