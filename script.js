@@ -8,15 +8,15 @@
 let startTime = null, previousEndTime = null;
 let currentWordIndex = 0;
 const wordsToType = [];
-let timerInterval   = null;  
-let totalCharsTyped   = 0;   
-let correctCharsTyped = 0;   
+let timerInterval = null;
+let totalCharsTyped = 0;
+let correctCharsTyped = 0;
 
 const modeSelect = document.getElementById("mode");
 const wordDisplay = document.getElementById("word-display");
 const inputField = document.getElementById("input-field");
 const results = document.getElementById("results");
-const restartBtn   = document.getElementById("restart-btn");
+const restartBtn = document.getElementById("restart-btn");
 const timerDisplay = document.getElementById("timer");
 
 const words = {
@@ -25,7 +25,7 @@ const words = {
         "sun", "sky", "tree", "fish", "book"
     ],
     medium: ["keyboard", "monitor", "printer", "charger", "battery",
-                "window", "button", "simple", "sample", "change"
+        "window", "button", "simple", "sample", "change"
     ],
     hard: ["synchronize", "complicated", "development", "extravagant", "misconception",
         "philosophical", "infrastructure", "electromagnetic", "authentication", "perpendicular"
@@ -38,13 +38,45 @@ const getRandomWord = (mode) => {
     return wordList[Math.floor(Math.random() * wordList.length)];
 };
 
+function demarrerTimer() {
+    if (timerInterval) clearInterval(timerInterval);
+    timerInterval = setInterval(function () {
+        if (startTime === null) return;
+        const secondes = Math.floor((Date.now() - startTime) / 1000);
+        timerDisplay.textContent = "⏱️ Temps : " + secondes + "s";
+    }, 500);
+}
+
+function stopTimer() {
+    clearInterval(timerInterval);
+    timerInterval = null;
+};
+
+function compterCorrects(saisi, attendu) {
+    let corrects = 0;
+    for (let i = 0; i < saisi.length; i++) {
+        if (saisi[i] === attendu[i]) corrects++;
+    }
+    return corrects;
+}
+
+function calculerAccuracy() {
+    if (totalCharsTyped === 0) return 0;
+    return Math.round((correctCharsTyped / totalCharsTyped) * 100);
+};
+
 // Initialize the typing test
-const startTest = (wordCount = 50) => {
+const startTest = (wordCount = 10) => {
     wordsToType.length = 0; // Clear previous words
     wordDisplay.innerHTML = ""; // Clear display
     currentWordIndex = 0;
     startTime = null;
     previousEndTime = null;
+    totalCharsTyped = 0;
+    correctCharsTyped = 0;
+    inputField.disabled = false;
+    stopTimer();
+    timerDisplay.textContent = "⏱️ Temps : 0s";
 
     for (let i = 0; i < wordCount; i++) {
         wordsToType.push(getRandomWord(modeSelect.value));
@@ -59,11 +91,14 @@ const startTest = (wordCount = 50) => {
 
     inputField.value = "";
     results.textContent = "";
+    inputField.focus();
 };
 
 // Start the timer when user begins typing
 const startTimer = () => {
     if (!startTime) startTime = Date.now();
+    demarrerTimer();
+
 };
 
 // Calculate and return WPM & accuracy
@@ -78,6 +113,9 @@ const getCurrentStats = () => {
 // Move to the next word and update stats only on spacebar press
 const updateWord = (event) => {
     if (event.key === " ") { // Check if spacebar is pressed
+        totalCharsTyped += inputField.value.trim().length;
+        correctCharsTyped += compterCorrects(inputField.value.trim(), wordsToType[currentWordIndex]);
+
         if (inputField.value.trim() === wordsToType[currentWordIndex]) {
             if (!previousEndTime) previousEndTime = startTime;
 
@@ -90,6 +128,12 @@ const updateWord = (event) => {
 
             inputField.value = ""; // Clear input field after space
             event.preventDefault(); // Prevent adding extra spaces
+
+            if (currentWordIndex >= wordsToType.length) {
+                finDeJeu();
+            }
+        } else {
+            inputField.value = "";
         }
     }
 };
