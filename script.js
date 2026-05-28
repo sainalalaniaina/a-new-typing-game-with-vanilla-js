@@ -96,9 +96,10 @@ const startTest = (wordCount = 10) => {
 
 // Start the timer when user begins typing
 const startTimer = () => {
-    if (!startTime) startTime = Date.now();
+    if (!startTime){ 
+        startTime = Date.now();
     demarrerTimer();
-
+}
 };
 
 // Calculate and return WPM & accuracy
@@ -108,6 +109,33 @@ const getCurrentStats = () => {
     const accuracy = (wordsToType[currentWordIndex].length / inputField.value.length) * 100;
 
     return { wpm: wpm.toFixed(2), accuracy: accuracy.toFixed(2) };
+};
+
+const calculerWPM = () => {
+    if (!startTime) return 0;
+    const secondes = (Date.now() - startTime) / 1000;
+    const minutes = secondes / 60;
+    if (minutes === 0) return 0;
+
+    let totalCaracteres = 0;
+    for (let i = 0; i < currentWordIndex; i++) {
+        totalCaracteres += wordsToType[i].length;
+    }
+    const mots = totalCaracteres / 5;
+    return Math.round(mots / minutes);
+};
+
+const finDeJeu = () => {
+    inputField.disabled = true;
+    stopTimer();
+    const wpm = calculerWPM();
+    const accuracy = calculerAccuracy();
+    const score = Math.round(wpm * (accuracy / 100));
+    results.innerHTML =
+        "🎉 Terminé ! " +
+        "WPM : <strong>" + wpm + "</strong> | " +
+        "Précision : <strong>" + accuracy + "%</strong> | " +
+        "Score final : <strong>" + score + "</strong>";
 };
 
 // Move to the next word and update stats only on spacebar press
