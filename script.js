@@ -188,3 +188,5 @@ modeSelect.addEventListener("change", () => startTest());
 
 // Start the test
 startTest();
+
+restartBtn.addEventListener("click", () => startTest());
