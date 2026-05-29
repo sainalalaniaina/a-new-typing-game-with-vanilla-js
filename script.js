@@ -150,6 +150,7 @@ const updateWord = (event) => {
             const { wpm, accuracy } = getCurrentStats();
             results.textContent = `WPM: ${wpm}, Accuracy: ${accuracy}%`;
 
+            wordDisplay.children[currentWordIndex].style.color = "#4caf50";
             currentWordIndex++;
             previousEndTime = Date.now();
             highlightNextWord();
@@ -177,6 +178,33 @@ const highlightNextWord = () => {
         wordElements[currentWordIndex].style.color = "red";
     }
 };
+
+function highlightCaracteres() {
+    const spans   = wordDisplay.children;
+    const span    = spans[currentWordIndex];
+    const attendu = wordsToType[currentWordIndex];
+    const saisi   = inputField.value;
+
+    let html = "";
+    for (let i = 0; i < attendu.length; i++) {
+        if (i < saisi.length) {
+            if (saisi[i] === attendu[i]) {
+                html += '<span style="color:green">' + attendu[i] + '</span>';
+            } else {
+                html += '<span style="color:red;text-decoration:underline">' + attendu[i] + '</span>';
+            }
+        } else {
+            html += '<span style="color:#333">' + attendu[i] + '</span>';
+        }
+    }
+    span.innerHTML = html + " ";
+}
+
+inputField.addEventListener("input", function() {
+    if (currentWordIndex < wordsToType.length) {
+        highlightCaracteres();
+    }
+});
 
 // Event listeners
 // Attach `updateWord` to `keydown` instead of `input`
