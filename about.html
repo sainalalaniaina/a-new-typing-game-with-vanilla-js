@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À propos - Typing Test</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="about.css">
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <img src="logo.png" alt="" class="logo">
+            <nav>
+                <a href="index.html">Jouer</a>
+                <a href="about.html" id="propos">À propos</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="about-container">
+
+        <section class="about-section">
+            <h2>📋 Règles du jeu</h2>
+            <ul>
+                <li>Un mot = <strong>5 caractères</strong> (espaces inclus)</li>
+                <li>Tape le mot affiché en <span class="highlight-red">rouge</span> puis appuie sur <strong>Espace</strong></li>
+                <li>Le mot doit être <strong>exactement correct</strong> pour être validé</li>
+                <li>Les lettres s'affichent en <span class="highlight-green">vert</span> si correctes, en <span class="highlight-red">rouge</span> si incorrectes</li>
+                <li>Le jeu se termine quand tous les mots sont tapés</li>
+            </ul>
+        </section>
+
+        <section class="about-section">
+            <h2>🎮 Comment jouer</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-text">
+                        <h3>Choisir un mode</h3>
+                        <p>Sélectionne <strong>Facile</strong>, <strong>Moyen</strong> ou <strong>Difficile</strong> selon ton niveau.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-text">
+                        <h3>Commencer à taper</h3>
+                        <p>Tape le mot affiché en rouge. Le timer démarre automatiquement à la première frappe.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-text">
+                        <h3>Valider avec Espace</h3>
+                        <p>Appuie sur <strong>Espace</strong> pour passer au mot suivant. Le mot doit être correct !</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-text">
+                        <h3>Voir ton score</h3>
+                        <p>À la fin, ton <strong>WPM</strong>, ta <strong>précision</strong> et ton <strong>score final</strong> s'affichent.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <h2>📊 Comprendre les statistiques</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>⚡ WPM</h3>
+                    <p>Words Per Minute — le nombre de mots tapés par minute. <strong>1 mot = 5 caractères</strong>.</p>
+                </div>
+                <div class="stat-card">
+                    <h3>🎯 Précision</h3>
+                    <p>Pourcentage de caractères tapés <strong>correctement</strong> sur tous les caractères tapés.</p>
+                </div>
+                <div class="stat-card">
+                    <h3>🏆 Score final</h3>
+                    <p>Calculé avec la formule : <strong>WPM × (précision / 100)</strong>.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <h2>👨‍💻 À propos du développeur</h2>
+            <div class="dev-card">
+                <div class="dev-avatar">👤</div>
+                <div class="dev-info">
+                    <h3>Typing Test</h3>
+                    <p>Ce projet a été développé dans le cadre d'un <strong>examen de programmation web</strong>.</p>
+                    <p>Construit avec les technologies :</p>
+                    <div class="tech-badges">
+                        <span class="badge">HTML</span>
+                        <span class="badge">CSS</span>
+                        <span class="badge">JavaScript</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>
