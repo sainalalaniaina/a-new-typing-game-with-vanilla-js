@@ -6,30 +6,38 @@
 
 body {
     font-family: 'Courier New', Courier, monospace;
-    background-color: #1a1a2e;
-    color: #e0e0e0;
+    background-color: #faf8ff;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+        url('bg-1300.png');
+    color: #333;
     padding: 20px;
     min-height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 header {
     text-align: center;
     margin-bottom: 30px;
     padding: 20px;
-    background: #16213e;
+    background: #fff;
     border-radius: 10px;
+    border: 3px solid #dab5fa;
+    position: sticky;
+    top: 0;
 }
 
 header h1 {
     font-size: 32px;
-    color: #f5a623;
+    color: #7c5cbf;
     letter-spacing: 3px;
     margin-bottom: 14px;
 }
 
 header label {
     font-size: 14px;
-    color: #aaa;
+    color: #888;
     margin-right: 8px;
 }
 
@@ -37,9 +45,9 @@ header select {
     padding: 6px 14px;
     font-size: 15px;
     border-radius: 6px;
-    border: 1px solid #f5a623;
-    background: #1a1a2e;
-    color: #f5a623;
+    border: 1px solid #c4a55a;
+    background: #fff;
+    color: #c4a55a;
     cursor: pointer;
     font-family: 'Courier New', monospace;
 }
@@ -53,8 +61,8 @@ main {
 }
 
 #word-display {
-    background: #16213e;
-    border: 1px solid #0f3460;
+    background: #7c5cbf;
+    border: 1px solid #e0d8f0;
     border-radius: 10px;
     padding: 24px;
     font-size: 20px;
@@ -62,23 +70,24 @@ main {
     min-height: 130px;
     cursor: text;
     word-break: break-word;
+    box-shadow: 0 0 25px rgba(124, 58, 237, .35);
 }
 
 #input-field {
     padding: 14px;
     font-size: 18px;
-    border: 2px solid #0f3460;
+    border: 2px solid #dab5fa;
     border-radius: 8px;
     width: 100%;
-    background: #16213e;
-    color: #e0e0e0;
+    background: #fff;
+    color: #333;
     font-family: 'Courier New', monospace;
     transition: border-color 0.2s;
 }
 
 #input-field:focus {
     outline: none;
-    border-color: #f5a623;
+    border-color: #7c5cbf;
 }
 
 #input-field:disabled {
@@ -90,24 +99,30 @@ main {
     font-size: 18px;
     font-weight: bold;
     text-align: center;
-    color: #f5a623;
+    color: #7c5cbf;
     padding: 10px;
-    background: #16213e;
+    background: #fff;
     border-radius: 8px;
-    border: 1px solid #0f3460;
+    border: 1px solid #dab5fa;
 }
 
 #timer {
     text-align: center;
-    font-size: 15px;
-    color: #aaa;
+    font-size: 24px;
+    font-weight: bold;
+    color: #7c5cbf;
+    background: #fff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: 2px solid #dab5fa;
+    box-shadow: 0 2px 8px rgba(124, 92, 191, 0.1);
 }
 
 #restart-btn {
     padding: 12px 28px;
     font-size: 16px;
-    background-color: #f5a623;
-    color: #1a1a2e;
+    background-color: #7930a3;
+    color: #fff;
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -119,10 +134,43 @@ main {
 }
 
 #restart-btn:hover {
-    background-color: #e6951a;
+    background-color: #9c1fe4;
     transform: translateY(-2px);
 }
 
 #restart-btn:active {
     transform: translateY(0);
+}
+
+.mode-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 12px;
+}
+
+.mode-btn {
+    padding: 10px 20px;
+    font-size: 15px;
+    border-radius: 6px;
+    border: 2px solid #8B4FC3;
+    background: #fff;
+    color: #8B4FC3;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+.mode-btn:hover {
+    background: #f0e6ff;
+}
+
+.mode-btn.active {
+    background: #8B4FC3;
+    color: #fff;
+}
+
+.mode-btn.active:hover {
+    background: #9c5fd6;
 }

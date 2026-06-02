@@ -18,6 +18,13 @@ const inputField = document.getElementById("input-field");
 const results = document.getElementById("results");
 const restartBtn = document.getElementById("restart-btn");
 const timerDisplay = document.getElementById("timer");
+const modeButtons = document.querySelectorAll(".mode-btn");
+
+
+const COLOR_CORRECT = "#5b9e6e"; 
+const COLOR_WRONG = "#c0392b";    
+
+let currentMode = "easy";
 
 const words = {
     easy: ["apple", "banana", "grape", "orange", "cherry",
@@ -34,7 +41,7 @@ const words = {
 
 // Generate a random word from the selected mode
 const getRandomWord = (mode) => {
-    const wordList = words[mode];
+    const wordList = words[mode || currentMode];
     return wordList[Math.floor(Math.random() * wordList.length)];
 };
 
@@ -79,18 +86,22 @@ const startTest = (wordCount = 10) => {
     timerDisplay.textContent = "⏱️ Temps : 0s";
 
     for (let i = 0; i < wordCount; i++) {
-        wordsToType.push(getRandomWord(modeSelect.value));
+        wordsToType.push(getRandomWord(currentMode));
     }
 
     wordsToType.forEach((word, index) => {
         const span = document.createElement("span");
         span.textContent = word + " ";
-        if (index === 0) span.style.color = "red"; // Highlight first word
+        span.style.color = "#FFFFFF";
+        if (index === 0) {
+            span.style.color = "#c4a55a"; // Highlight first word
+            span.style.fontWeight = "bold";
+        }
         wordDisplay.appendChild(span);
     });
 
     inputField.value = "";
-    results.textContent = "";
+    results.innerHTML = "WPM : 0 | Accuracy : 0% | Score : 0";
     inputField.focus();
 };
 
@@ -149,8 +160,11 @@ const updateWord = (event) => {
 
             const { wpm, accuracy } = getCurrentStats();
             results.textContent = `WPM: ${wpm}, Accuracy: ${accuracy}%`;
-
-            wordDisplay.children[currentWordIndex].style.color = "#4caf50";
+                const span = wordDisplay.children[currentWordIndex];
+                if (span) {
+                    span.style.color = COLOR_CORRECT;
+                    span.style.textDecoration = "none";
+                }
             currentWordIndex++;
             previousEndTime = Date.now();
             highlightNextWord();
@@ -174,8 +188,10 @@ const highlightNextWord = () => {
     if (currentWordIndex < wordElements.length) {
         if (currentWordIndex > 0) {
             wordElements[currentWordIndex - 1].style.color = "black";
+            wordElements[currentWordIndex - 1].style.fontWeight = "normal";
         }
-        wordElements[currentWordIndex].style.color = "red";
+        wordElements[currentWordIndex].style.color = "#FFD166";
+        wordElements[currentWordIndex].style.fontWeight = "bold";
     }
 };
 
@@ -194,7 +210,7 @@ function highlightCaracteres() {
                 html += '<span style="color:red;text-decoration:underline">' + attendu[i] + '</span>';
             }
         } else {
-            html += '<span style="color:#333">' + attendu[i] + '</span>';
+            html += '<span style="color:#FFFFFF">' + attendu[i] + '</span>';
         }
     }
     span.innerHTML = html + " ";
@@ -212,7 +228,15 @@ inputField.addEventListener("keydown", (event) => {
     startTimer();
     updateWord(event);
 });
-modeSelect.addEventListener("change", () => startTest());
+
+modeButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+        currentMode = btn.getAttribute("data-mode");
+        modeButtons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        startTest();
+    });
+});
 
 // Start the test
 startTest();
