@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #1a1a2e;
+    color: #e0e0e0;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #16213e;
+    border-radius: 10px;
+}
+
+header h1 {
+    font-size: 32px;
+    color: #f5a623;
+    letter-spacing: 3px;
+    margin-bottom: 14px;
+}
+
+header label {
+    font-size: 14px;
+    color: #aaa;
+    margin-right: 8px;
+}
+
+header select {
+    padding: 6px 14px;
+    font-size: 15px;
+    border-radius: 6px;
+    border: 1px solid #f5a623;
+    background: #1a1a2e;
+    color: #f5a623;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+}
+
+main {
+    max-width: 820px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+#word-display {
+    background: #16213e;
+    border: 1px solid #0f3460;
+    border-radius: 10px;
+    padding: 24px;
+    font-size: 20px;
+    line-height: 2.2;
+    min-height: 130px;
+    cursor: text;
+    word-break: break-word;
+}
+
+#input-field {
+    padding: 14px;
+    font-size: 18px;
+    border: 2px solid #0f3460;
+    border-radius: 8px;
+    width: 100%;
+    background: #16213e;
+    color: #e0e0e0;
+    font-family: 'Courier New', monospace;
+    transition: border-color 0.2s;
+}
+
+#input-field:focus {
+    outline: none;
+    border-color: #f5a623;
+}
+
+#input-field:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#results {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    color: #f5a623;
+    padding: 10px;
+    background: #16213e;
+    border-radius: 8px;
+    border: 1px solid #0f3460;
+}
+
+#timer {
+    text-align: center;
+    font-size: 15px;
+    color: #aaa;
+}
+
+#restart-btn {
+    padding: 12px 28px;
+    font-size: 16px;
+    background-color: #f5a623;
+    color: #1a1a2e;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    align-self: center;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: background 0.2s, transform 0.1s;
+}
+
+#restart-btn:hover {
+    background-color: #e6951a;
+    transform: translateY(-2px);
+}
+
+#restart-btn:active {
+    transform: translateY(0);
+}
