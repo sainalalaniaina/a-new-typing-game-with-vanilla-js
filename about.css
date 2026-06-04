@@ -191,3 +191,9 @@ nav a:hover {
     color: #4caf50;
     font-weight: bold;
 }
+
+#user-display-about {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
