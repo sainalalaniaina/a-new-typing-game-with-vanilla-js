@@ -42,6 +42,11 @@ nav a:hover {
     color: #fff;
 }
 
+#connex {
+    background: #7930a3;
+    color: #fff;
+}
+
 .about-container {
     max-width: 800px;
     margin: 0 auto;

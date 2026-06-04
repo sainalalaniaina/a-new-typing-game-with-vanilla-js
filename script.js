@@ -1,11 +1,4 @@
-﻿/**
- * Point culture (en Français car je suis un peu obligé): 
- * Dans ce genre de jeu, un mot equivaut a 5 caractères, y compris les espaces. 
- * La precision, c'est le pourcentage de caractères tapées correctement sur toutes les caractères tapées.
- * 
- * Sur ce... Amusez-vous bien ! 
- */
-let startTime = null, previousEndTime = null;
+﻿let startTime = null, previousEndTime = null;
 let currentWordIndex = 0;
 const wordsToType = [];
 let timerInterval = null;
@@ -39,7 +32,6 @@ const words = {
     ]
 };
 
-// Generate a random word from the selected mode
 const getRandomWord = (mode) => {
     const wordList = words[mode || currentMode];
     return wordList[Math.floor(Math.random() * wordList.length)];
@@ -72,10 +64,9 @@ function calculerAccuracy() {
     return Math.round((correctCharsTyped / totalCharsTyped) * 100);
 };
 
-// Initialize the typing test
-const startTest = (wordCount = 10) => {
-    wordsToType.length = 0; // Clear previous words
-    wordDisplay.innerHTML = ""; // Clear display
+const startTest = (wordCount = 30) => {
+    wordsToType.length = 0; 
+    wordDisplay.innerHTML = ""; 
     currentWordIndex = 0;
     startTime = null;
     previousEndTime = null;
@@ -94,7 +85,7 @@ const startTest = (wordCount = 10) => {
         span.textContent = word + " ";
         span.style.color = "#FFFFFF";
         if (index === 0) {
-            span.style.color = "#c4a55a"; // Highlight first word
+            span.style.color = "#c4a55a"; 
             span.style.fontWeight = "bold";
         }
         wordDisplay.appendChild(span);
@@ -105,7 +96,6 @@ const startTest = (wordCount = 10) => {
     inputField.focus();
 };
 
-// Start the timer when user begins typing
 const startTimer = () => {
     if (!startTime){ 
         startTime = Date.now();
@@ -113,10 +103,9 @@ const startTimer = () => {
 }
 };
 
-// Calculate and return WPM & accuracy
 const getCurrentStats = () => {
-    const elapsedTime = (Date.now() - previousEndTime) / 1000; // Seconds
-    const wpm = (wordsToType[currentWordIndex].length / 5) / (elapsedTime / 60); // 5 chars = 1 word
+    const elapsedTime = (Date.now() - previousEndTime) / 1000; 
+    const wpm = (wordsToType[currentWordIndex].length / 5) / (elapsedTime / 60); 
     const accuracy = (wordsToType[currentWordIndex].length / inputField.value.length) * 100;
 
     return { wpm: wpm.toFixed(2), accuracy: accuracy.toFixed(2) };
@@ -149,9 +138,8 @@ const finDeJeu = () => {
         "Score final : <strong>" + score + "</strong>";
 };
 
-// Move to the next word and update stats only on spacebar press
 const updateWord = (event) => {
-    if (event.key === " ") { // Check if spacebar is pressed
+    if (event.key === " ") { 
         totalCharsTyped += inputField.value.trim().length;
         correctCharsTyped += compterCorrects(inputField.value.trim(), wordsToType[currentWordIndex]);
 
@@ -169,8 +157,8 @@ const updateWord = (event) => {
             previousEndTime = Date.now();
             highlightNextWord();
 
-            inputField.value = ""; // Clear input field after space
-            event.preventDefault(); // Prevent adding extra spaces
+            inputField.value = ""; 
+            event.preventDefault(); 
 
             if (currentWordIndex >= wordsToType.length) {
                 finDeJeu();
@@ -181,7 +169,6 @@ const updateWord = (event) => {
     }
 };
 
-// Highlight the current word in red
 const highlightNextWord = () => {
     const wordElements = wordDisplay.children;
 
@@ -222,8 +209,6 @@ inputField.addEventListener("input", function() {
     }
 });
 
-// Event listeners
-// Attach `updateWord` to `keydown` instead of `input`
 inputField.addEventListener("keydown", (event) => {
     startTimer();
     updateWord(event);
@@ -238,7 +223,6 @@ modeButtons.forEach(btn => {
     });
 });
 
-// Start the test
 startTest();
 
 restartBtn.addEventListener("click", () => startTest());

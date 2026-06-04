@@ -1,0 +1,120 @@
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+}
+
+.auth-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 36px;
+    width: 100%;
+    max-width: 420px;
+    border: 1px solid #e0d8f0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.auth-card h2 {
+    font-size: 26px;
+    color: #7c5cbf;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.auth-subtitle {
+    text-align: center;
+    font-size: 14px;
+    color: #aaa;
+    margin-top: -10px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-size: 13px;
+    color: #7c5cbf;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.form-group input {
+    padding: 12px 14px;
+    font-size: 15px;
+    border: 1px solid #e0d8f0;
+    border-radius: 8px;
+    background: #faf8ff;
+    color: #333;
+    font-family: 'Courier New', monospace;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #7c5cbf;
+    box-shadow: 0 0 0 3px rgba(124, 92, 191, 0.15);
+}
+
+#login-btn,
+#register-btn {
+    padding: 13px;
+    font-size: 16px;
+    background-color: #7c5cbf;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: background 0.2s, transform 0.1s;
+    width: 100%;
+}
+
+#login-btn:hover,
+#register-btn:hover {
+    background-color: #6a4aad;
+    transform: translateY(-2px);
+}
+
+#login-btn:active,
+#register-btn:active {
+    transform: translateY(0);
+}
+
+.auth-switch {
+    text-align: center;
+    font-size: 13px;
+    color: #888;
+}
+
+.auth-switch a {
+    color: #c4a55a;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.auth-switch a:hover {
+    text-decoration: underline;
+}
+
+.error-msg {
+    color: #c0392b;
+    font-size: 13px;
+    text-align: center;
+    min-height: 18px;
+}
+
+.success-msg {
+    color: #5b9e6e;
+    font-size: 13px;
+    text-align: center;
+    min-height: 18px;
+}
