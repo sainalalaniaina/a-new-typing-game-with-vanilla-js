@@ -17,11 +17,29 @@
             <nav>
                 <a href="index.html" id="jou">Jouer</a>
                 <a href="about.html">À propos</a>
-                <a href="login.html">Connexion</a>
+                <div id="user-display"></div>
+
             </nav>
         </div>
-        <label for="mode">Niveau:</label>
+
+        <div id="lang-selector">
+            <label for="lang">Langue :</label>
+            <select id="lang">
+                <option value="fr">🇫🇷 Français</option>
+                <option value="en">🇬🇧 Anglais</option>
+                <option value="es">🇪🇸 Espagnol</option>
+                <option value="it">🇮🇹 Italien</option>
+                <option value="mg">🇲🇬 Malagasy</option>
+                <option value="tr">🇹🇷 Turc</option>
+                <option value="ru">🇷🇺 Russe</option>
+                <option value="ko">🇰🇷 Coréen</option>
+                <option value="ja">🇯🇵 Japonais</option>
+                <option value="zh">🇨🇳 Chinois</option>
+            </select>
+        </div>
+
         <div id="mode-buttons" class="mode-buttons">
+            <label for="mode">Niveau:</label>
             <button class="mode-btn active" data-mode="easy">Facile</button>
             <button class="mode-btn" data-mode="medium">Moyen</button>
             <button class="mode-btn" data-mode="hard">Difficile</button>

@@ -21,7 +21,7 @@ header {
     text-align: center;
     margin-bottom: 30px;
     padding: 20px;
-    background: #fff;
+    background: rgba(255, 255, 255, 0.9);
     border-radius: 10px;
     border: 3px solid #dab5fa;
     position: sticky;
@@ -45,11 +45,15 @@ header select {
     padding: 6px 14px;
     font-size: 15px;
     border-radius: 6px;
-    border: 1px solid #c4a55a;
+    border: 1px solid #8B4FC3;
     background: #fff;
-    color: #c4a55a;
+    color: #8B4FC3;
     cursor: pointer;
     font-family: 'Courier New', monospace;
+}
+
+#lang-selector {
+    display: none;
 }
 
 main {
@@ -175,6 +179,7 @@ main {
 .mode-btn.active:hover {
     background: #9c5fd6;
 }
+
 #user-display {
     display: flex;
     align-items: center;
@@ -190,10 +195,10 @@ main {
 }
 
 #logout-btn {
-    font-size: 12px;
+    font-size: 15px;
     color: #e57373;
     border: 1px solid #e57373;
-    padding: 5px 12px;
+    padding: 12px 28px;
     border-radius: 20px;
     background: transparent;
     cursor: pointer;
@@ -204,4 +209,41 @@ main {
 #logout-btn:hover {
     background: #e57373;
     color: #fff;
+}
+
+.btn-connexion {
+    padding: 12px 28px;
+    color: #7930a3;
+    text-decoration: none;
+    font-size: 15px;
+    border: 1px solid #7930a3;
+    border-radius: 20px;
+    transition: all 0.2s;
+    height: fit-content;
+}
+
+.btn-connexion:hover {
+    background: #7930a3;
+    color: #fff;
+}
+
+.conseil-box {
+    background: #844cbc;
+    border: 1px solid #2d1f5e;
+    border-radius: 8px;
+    padding: 14px;
+    text-align: left;
+    margin-top: 12px;
+}
+
+.conseil-titre {
+    color: #f4f2ee;
+    font-size: 15px;
+}
+
+.conseil-texte {
+    color: #090909;
+    font-size: 13px;
+    margin-top: 6px;
+    line-height: 1.7;
 }
