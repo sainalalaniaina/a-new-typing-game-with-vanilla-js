@@ -15,8 +15,8 @@ const timerDisplay = document.getElementById("timer");
 const modeButtons = document.querySelectorAll(".mode-btn");
 const wordsToType = [];
 
-const COLOR_CORRECT = "#5b9e6e";
-const COLOR_WRONG = "#c0392b";
+const COLOR_CORRECT = "#00e676";
+const COLOR_WRONG = "#ff5252";
 
 
 const allWords = {
@@ -234,7 +234,9 @@ function highlightCaracteres() {
     span.innerHTML = html + " ";
 }
 
-function startTest(wordCount = 80) {
+function startTest() {
+    const wordCountEl = document.getElementById("word-count");
+    const wordCount = wordCountEl ? parseInt(wordCountEl.value) : 30;
     wordsToType.length = 0;
     wordDisplay.innerHTML = "";
     currentWordIndex = 0;
@@ -257,7 +259,7 @@ function startTest(wordCount = 80) {
         span.textContent = word + " ";
         span.style.color = "#fff";
         if (index === 0) {
-            span.style.color = "#c45aaa";
+            span.style.color = "#FFD166";
             span.style.fontWeight = "bold";
         }
         wordDisplay.appendChild(span);
@@ -337,10 +339,17 @@ if (langEl) {
     langEl.addEventListener("change", function () { startTest(); });
 }
 
+const wordCountEl = document.getElementById("word-count");
+if (wordCountEl) {
+    wordCountEl.addEventListener("change", function () { startTest(); });
+}
+
 function checkUser() {
     const currentUser = localStorage.getItem("currentUser");
     const userDisplay = document.getElementById("user-display");
     const langSelector = document.getElementById("lang-selector");
+    const wordCountSelector = document.getElementById("word-count-selector");
+    const msgOnConnecte = document.querySelector(".msg-non-connecte");
 
     if (currentUser) {
         if (userDisplay) {
@@ -353,6 +362,15 @@ function checkUser() {
             langSelector.style.gap = "8px";
             langSelector.style.alignItems = "center";
         }
+        if (wordCountSelector) {
+            wordCountSelector.style.display    = "inline-flex";
+            wordCountSelector.style.gap        = "8px";
+            wordCountSelector.style.alignItems = "center";
+        }
+        if (msgOnConnecte) {
+            msgOnConnecte.style.display = "none";
+        }
+        
     } else {
         if (userDisplay) {
             userDisplay.innerHTML =
@@ -361,6 +379,10 @@ function checkUser() {
 
         if (langSelector) {
             langSelector.style.display = "none";
+        }
+
+        if(wordCountSelector) {
+            wordCountSelector.style.display = "none";
         }
     }
 }
