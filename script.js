@@ -374,7 +374,7 @@ function checkUser() {
     } else {
         if (userDisplay) {
             userDisplay.innerHTML =
-                '<a href="login.html" class="btn-connexion">Connexion</a>';
+                '<a href="login.html" class="btn-connexion">Se connecter</a>';
         }
 
         if (langSelector) {

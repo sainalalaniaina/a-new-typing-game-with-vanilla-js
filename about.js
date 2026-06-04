@@ -10,6 +10,6 @@ if (currentUser) {
     
 } else {
     if (userDisplayAbout) {
-        userDisplayAbout.innerHTML = '<a href="login.html" class="btn-connexion">Connexion</a>';
+        userDisplayAbout.innerHTML = '<a href="login.html" class="btn-connexion">Se connecter</a>';
     }
 }
